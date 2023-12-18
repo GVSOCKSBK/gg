@@ -1,0 +1,25 @@
+Ping another system on the network:
+Open a command prompt or terminal and use the ping command followed by the IP address or hostname of the system you want to check. For example:
+
+bash
+Copy code
+ping 192.168.1.1
+Replace 192.168.1.1 with the IP address or hostname of the target system.
+
+Trace the route to another system:
+Use the tracert command to trace the route to a target system. For example:
+
+bash
+Copy code
+tracert 192.168.1.1
+Replace 192.168.1.1 with the IP address or hostname of the target system.
+
+List processes using ports for TCP protocol:
+To list processes using ports, you can use the netstat command. For example, to list all processes using TCP ports:
+
+bash
+Copy code
+netstat -ano | find "TCP"
+This command will display a list of processes, their process IDs (PIDs), and the TCP ports they are using.
+
+Remember that the actual commands may vary depending on your operating system (Windows, Linux, macOS). Additionally, some systems might require administrative privileges to execute certain commands. Always be cautious when running commands and ensure you have the necessary permissions.

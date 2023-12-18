@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Changer</title>
+    <style>
+        #text {
+            font-size: 18px;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+        .color-btn, .size-btn, .font-btn {
+            padding: 10px;
+            margin: 2px; /* No margin between buttons */
+            cursor: pointer;
+            width: 80px; /* Adjust the width as needed */
+            text-align: center;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: flex-end; /* Align the grid to the right */
+            grid-column-gap: 0; /* No horizontal gap between buttons */
+        }
+    </style>
+</head>
+<body>
+
+    <p id="text">This paragraph shows the click event of various buttons.</p>
+
+    <div class="grid-container">
+        <button class="color-btn" onclick="changeColor('red')">Red</button>
+        <button class="color-btn" onclick="changeColor('green')">Green</button>
+        <button class="color-btn" onclick="changeColor('blue')">Blue</button>
+
+        <button class="size-btn" onclick="changeSize(10)">10</button>
+        <button class="size-btn" onclick="changeSize(20)">20</button>
+        <button class="size-btn" onclick="changeSize(30)">30</button>
+
+        <button class="font-btn" onclick="changeFont('Georgia, serif')">Georgia</button>
+        <button class="font-btn" onclick="changeFont('Verdana, sans-serif')">Verdana</button>
+        <button class="font-btn" onclick="changeFont('Impact, sans-serif')">Impact</button>
+    </div>
+
+    <script>
+        function changeColor(color) {
+            document.getElementById('text').style.color = color;
+        }
+
+        function changeSize(size) {
+            document.getElementById('text').style.fontSize = size + 'px';
+        }
+
+        function changeFont(font) {
+            document.getElementById('text').style.fontFamily = font;
+        }
+    </script>
+
+</body>
+</html>

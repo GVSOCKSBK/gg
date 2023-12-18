@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplication Tables</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Multiplication Tables</h1>
+
+  <table id="multiplicationTable"></table>
+
+  <script>
+    // Function to generate and append a cell to the existing row
+    function appendCell(row, text, backgroundColor, fontSize) {
+      let cell = row.insertCell();
+      cell.textContent = text;
+      cell.style.backgroundColor = backgroundColor;
+      cell.style.fontSize = fontSize;
+    }
+
+    // Function to generate a row of the multiplication table
+    function generateTableRow(table, multiplier, fontSize) {
+      if (multiplier > 10) {
+        return;
+      }
+
+      let row = table.insertRow();
+      let color = '#' + Math.floor(Math.random() * 16777215).toString(16); // Random color
+
+      for (let i = 1; i <= 10; i++) {
+        let result = i * multiplier;
+        appendCell(row, result, color, fontSize);
+      }
+
+      // Recursive call with a delay
+      setTimeout(() => {
+        generateTableRow(table, multiplier + 1, (parseInt(fontSize) + 2) + "px");
+      }, 5000);
+    }
+
+    // Function to display the multiplication tables row-wise
+    function displayTables() {
+      let table = document.getElementById("multiplicationTable");
+      table.innerHTML = ""; // Clear previous content
+
+      generateTableRow(table, 2, "12px"); // Initial values
+    }
+
+    // Initial display
+    displayTables();
+  </script>
+
+</body>
+</html>

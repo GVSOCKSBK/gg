@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Information</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #petList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .pet-item {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pet Information</h1>
+    <ul id="petList"></ul>
+
+    <script>
+        // Use AJAX to load data from the JSON file
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                const pets = JSON.parse(this.responseText);
+                displayPets(pets);
+            }
+        };
+        xhr.open("GET", "pets.json", true);
+        xhr.send();
+
+        // Function to display pet data in a presentable way
+        function displayPets(pets) {
+            const petList = document.getElementById("petList");
+
+            pets.forEach(pet => {
+                const li = document.createElement("li");
+                li.className = "pet-item";
+                li.innerHTML = `
+                    <p><strong>Name:</strong> ${pet.name}</p>
+                    <p><strong>Age:</strong> ${pet.age}</p>
+                    <p><strong>Weight:</strong> ${pet.weight}</p>
+                    <p><strong>Type:</strong> ${pet.type}</p>
+                    <p><strong>Likes:</strong> ${pet.likes}</p>
+                `;
+                petList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
